@@ -1,3 +1,3 @@
-# -
+# 基于flask、MongoDB、Bootstrap、Selenium、BeautifulSoup、Echarts的爬虫及数据可视化项目
 注意！index（主网页）中的sidebar和header部分由于使用的模板我个人不需要，因此只是留下为了美观实际上是无效的，实际操作的只有正文中的几张echarts，如果有需要的朋友可以issue一下我到时候再po
-基于flask、MongoDB、Bootstrap、Selenium、BeautifulSoup、Echarts的爬虫及数据可视化项目
+
