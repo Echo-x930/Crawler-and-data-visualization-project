@@ -15,9 +15,6 @@ def SortLocation():
     nation = my_set_QS.find().distinct('location')    #各个国家的数量
     for country in nation:
         nation_num.append({'name':country, 'value':my_set_QS.find({'location':country}).count()})
-    # data = []
-    # for i in range(0, 28):
-    #     data.append({'name': nation[i], 'value': num[i]})
     nation_num = sorted(nation_num, key=lambda x: x['value'], reverse=True)[0:10]
     #endregion
     # region 取美国三个小分的中位数
