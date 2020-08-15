@@ -18,7 +18,7 @@ my_set_QS = db['QSRanking2020'] #集合相当于表
 #region Selenium浏览器启动配置
 options = webdriver.ChromeOptions()
 options.add_argument('no-sandbox')
-options.add_argument('user-agent = "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.105 Safari/537.36"')
+#options.add_argument('user-agent = "........"')
 driver = webdriver.Chrome(executable_path = 'chromedriver.exe', options=options)
 url = 'https://www.qschina.cn/university-rankings/world-university-rankings/2020'
 #endregion
@@ -27,10 +27,6 @@ url = 'https://www.qschina.cn/university-rankings/world-university-rankings/2020
 # get直接返回，不再等待界面加载完成
 desired_capabilities = DesiredCapabilities.CHROME
 desired_capabilities["pageLoadStrategy"] = "none"
-# 不能以包的文件名学前端
-# headers = {
-#     'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.105 Safari/537.36'
-# }
 def get_data():  #爬取网页、解析
     driver.get(url)  # 打开浏览器 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     time.sleep(10)
@@ -55,20 +51,10 @@ def get_data():  #爬取网页、解析
         IntStudent = box.find('td', class_='ind-1').text
         IntStuff = box.find('td', class_=None).find('div', class_='td-wrap').text
         print(rank, name, location, grade_overall, citationPstuff, IntStudent, IntStuff)
-    #         star = 0
         try:
-    #             star = int((box.find('span',class_='rating').attrs['class'][0].split("star")[1]))//10
-    #         except Exception as e:
-    #             print(e)
-    #             star = 0
-    #         print(star)
             my_set_QS.insert_one({'rank': rank, 'name': name,'location':location,
                                   'citationPstuff':citationPstuff,'IntStudent':IntStudent,
                                   'IntStuff':IntStuff})
-    #         time.sleep(1)
-    #         print('插入数据成功！')
-    # for i in range(1,11):
-    #     print(get_url('30299515',i))
         except:
             return
 
